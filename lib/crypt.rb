@@ -9,7 +9,7 @@ module Crypt
     end
 
     def encryption_key
-      ENV.fetch('ENCRYPTION_KEY')
+      ENV['ENCRYPTION_KEY']
     end
 
     ALGO = 'aes-256-cbc'.freeze
