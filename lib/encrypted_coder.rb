@@ -1,3 +1,5 @@
+require 'crypt'
+
 class EncryptedCoder
   def load(value)
     return if value.nil?

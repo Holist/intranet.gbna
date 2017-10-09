@@ -9,3 +9,6 @@ public/assets
 # Ignore application _configuration
 config/application.yml
 config/secrets.yml
+
+# Ignore application configuration
+/config/application.yml

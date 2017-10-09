@@ -11,6 +11,7 @@ gem 'redis'
 gem 'rolify'
 gem 'net-ldap'
 gem 'activeldap'
+gem 'figaro'
 
 # Frontend
 gem 'autoprefixer-rails'
