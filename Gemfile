@@ -1,13 +1,18 @@
 source 'https://rubygems.org'
 ruby '2.3.4'
 
+# Backend
 gem 'devise'
 gem 'jbuilder', '~> 2.0'
 gem 'pg'
 gem 'puma'
 gem 'rails', '5.1.4'
 gem 'redis'
+gem 'rolify'
+gem 'net-ldap'
+gem 'activeldap'
 
+# Frontend
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
