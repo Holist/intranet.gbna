@@ -10,7 +10,7 @@ gem 'rails', '5.1.4'
 gem 'redis'
 gem 'rolify'
 gem 'net-ldap'
-gem 'activeldap'
+gem 'activeldap', :require => 'active_ldap/railtie'
 gem 'figaro'
 
 # Frontend

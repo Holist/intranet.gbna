@@ -1,5 +1,3 @@
 class AdOu < ActiveLdap::Base
-  ldap_mapping dn_attribute: "cn",
-               prefix: "",
-               classes: ["organizationalUnit"]
+  ldap_mapping  :dn_attribute => 'OU', :prefix => '', :classes => ['organizationalUnit']
 end
