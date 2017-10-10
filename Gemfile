@@ -23,6 +23,7 @@ gem 'simple_form'
 gem 'uglifier'
 
 group :development, :test do
+  gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'web-console', '>= 3.3.0'
