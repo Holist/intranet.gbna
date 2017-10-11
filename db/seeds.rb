@@ -36,7 +36,6 @@ User.create(
 )
 
 User.create(
-  email: 'g.rauber@bordeauxnord.com',
   first_name: 'Grégory',
   last_name: 'Rauber',
   password: '123456',
@@ -45,11 +44,9 @@ User.create(
 )
 
 User.create(
-  email: 'admin@bordeauxnord.com',
   first_name: 'Admin',
   password: '123456',
   username: 'admin',
-  ldap_imported: false
 )
 
 User.create(
@@ -81,6 +78,8 @@ Option.create(
 )
 
 puts "Lets create some UserOptions"
+
+# Some of theses will fail because of uniqueness validation, dont care.
 
 1.upto(20) do |n|
   UserOption.create(
