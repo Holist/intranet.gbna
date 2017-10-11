@@ -2,8 +2,8 @@ class User < ApplicationRecord
   rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  # :registerable, :recoverable
-  devise :database_authenticatable, :rememberable, :trackable, :validatable
+  # :registerable, :recoverable, :rememberable
+  devise :database_authenticatable, :trackable, :validatable, :timeoutable
   # Virtual attribute for authenticating by either username or email
   # This is in addition to a real persisted field like 'username'
   attr_accessor :login
