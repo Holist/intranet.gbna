@@ -8,10 +8,14 @@ class User < ApplicationRecord
   # This is in addition to a real persisted field like 'username'
   attr_accessor :login
 
+  before_validation(on: :create) do
+    self.email = "#{self.username}@pbna.intra" if self.email.blank?
+  end
   validates :username, :presence => true, :uniqueness => { :case_sensitive => false }
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
   validate :validate_username
-  # has_many :options, through: :user_options
+  has_many :user_options
+  has_many :options, through: :user_options
 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
@@ -27,6 +31,5 @@ class User < ApplicationRecord
       errors.add(:username, :invalid)
     end
   end
-
 
 end
