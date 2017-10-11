@@ -36,7 +36,6 @@ User.create(
 )
 
 User.create(
-  email: 'g.rauber@bordeauxnord.com',
   first_name: 'Grégory',
   last_name: 'Rauber',
   password: '123456',
@@ -48,18 +47,6 @@ User.create(
   first_name: 'Admin',
   password: '123456',
   username: 'admin',
-)
-
-User.create(
-  first_name: 'Admin',
-  password: '123456',
-  username: 'admin2',
-)
-
-User.create(
-  first_name: 'Admin',
-  password: '123456',
-  username: 'admin3',
 )
 
 User.create(
