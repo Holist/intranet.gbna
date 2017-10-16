@@ -1,7 +1,7 @@
 class LdapService
 
-  def users_sync
-    recents_users = get_last_users(300)
+  def users_sync(date = 90)
+    recents_users = get_last_users(date)
     users = clean(recents_users)
     return 'nothing to import' if users.empty?
     create_users(users)
@@ -9,7 +9,7 @@ class LdapService
 
   private
 
-  def get_last_users(date = 30)
+  def get_last_users(date)
     last_users = []
     AdUser.all.each do |user|
       next if user.sAMAccountName.ends_with?('$')
