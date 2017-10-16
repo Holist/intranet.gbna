@@ -9,10 +9,10 @@ class User < ApplicationRecord
   attr_accessor :login
 
   before_validation(on: :create) do
-    self.email = "#{self.username}@pbna.intra" if self.email.blank?
+    self.email = "#{self.username}@pbna.intra" if self.email.blank? || self.email == 'ennov@bordeauxnord.com'
   end
   validates :username, :presence => true, :uniqueness => { :case_sensitive => false }
-  validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
+  validates_format_of :username, with: /^[^@]*$/, :multiline => true
   validate :validate_username
   has_many :user_options
   has_many :options, through: :user_options
