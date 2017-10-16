@@ -47,6 +47,13 @@ User.create(
   first_name: 'Admin',
   password: '123456',
   username: 'admin',
+  ldap_imported: false
+)
+
+User.create(
+  first_name: 'titi',
+  password: '123456',
+  username: 'titi',
 )
 
 User.create(
