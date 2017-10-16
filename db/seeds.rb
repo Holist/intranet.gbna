@@ -21,7 +21,7 @@ User.create(
   email: 'r.neuville@bordeauxnord.com',
   first_name: 'Romain',
   last_name: 'Neuville',
-  password: '123456',
+  password: ENV['DEFAULT_PASSWORD'],
   username: 'rneuville',
   ldap_imported: true
 )
@@ -30,7 +30,7 @@ User.create(
   email: 'f.bonnet@bordeauxnord.com',
   first_name: 'Frédéric',
   last_name: 'Bonnet',
-  password: '123456',
+  password: ENV['DEFAULT_PASSWORD'],
   username: 'fbonnet',
   ldap_imported: true
 )
@@ -38,21 +38,21 @@ User.create(
 User.create(
   first_name: 'Grégory',
   last_name: 'Rauber',
-  password: '123456',
+  password: ENV['DEFAULT_PASSWORD'],
   username: 'grauber',
   ldap_imported: true
 )
 
 User.create(
   first_name: 'Admin',
-  password: '123456',
+  password: ENV['DEFAULT_PASSWORD'],
   username: 'admin',
   ldap_imported: false
 )
 
 User.create(
   first_name: 'titi',
-  password: '123456',
+  password: ENV['DEFAULT_PASSWORD'],
   username: 'titi',
 )
 
@@ -60,7 +60,7 @@ User.create(
   email: 'toto@gmail.com',
   first_name: 'To',
   last_name: 'To',
-  password: '123456',
+  password: ENV['DEFAULT_PASSWORD'],
   username: 'toto',
   ldap_imported: false
 )
