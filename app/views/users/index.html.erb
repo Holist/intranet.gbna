@@ -4,7 +4,7 @@
   <div class="container">
     <div class="row">
       <div class="col">
-          <%= f.input :term, placeholder: "Enter user's name or surname" %>
+          <%= f.input :term, input_html: { name: "term" }, placeholder: "Enter user's name or surname" %>
         </div>
         <div class="col text-center">
           <%= f.button :submit, value: 'Search!' %>
@@ -13,5 +13,16 @@
   </div>
 <% end %>
 
+
+
+
+<table>
+  <tr>
+    <th>Username</th>
+    <th>Firstname</th>
+    <th>Lastname</th>
+  </tr>
+
 <%= render "user", users: @users %>
 
+</table>

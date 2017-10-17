@@ -1,16 +1,8 @@
-<table>
+<% users.each do |user| %>
   <tr>
-    <th>Username</th>
-    <th>Firstname</th>
-    <th>Lastname</th>
+    <td><%= user.username  %></td>
+    <td><%= user.first_name  %></td>
+    <td><%= user.last_name  %></td>
   </tr>
+<% end %>
 
-    <% users.each do |user| %>
-      <tr>
-        <td><%= user.username  %></td>
-        <td><%= user.first_name  %></td>
-        <td><%= user.last_name  %></td>
-      </tr>
-    <% end %>
-
-</table>

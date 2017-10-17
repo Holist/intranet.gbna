@@ -17,6 +17,9 @@ class User < ApplicationRecord
   has_many :user_options
   has_many :options, through: :user_options
 
+  include PgSearch
+  pg_search_scope :search_by_name, against: [:first_name, :username, :last_name]
+
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)

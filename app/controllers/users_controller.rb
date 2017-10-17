@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.all
+    byebug
+    if params[:term]
+      @users = User.search_by_name(params[:term])
+    else
+      @users = User.all
+    end
   end
 
 end
