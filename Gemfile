@@ -23,6 +23,9 @@ gem 'jquery-rails'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
+gem 'select2-rails'
+gem 'underscore-rails'
+
 
 group :development, :test do
   gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
