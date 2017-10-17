@@ -12,6 +12,8 @@ gem 'rolify'
 gem 'net-ldap'
 gem 'activeldap', :require => 'active_ldap/railtie'
 gem 'figaro'
+gem 'pg_search'
+
 
 # Frontend
 gem 'autoprefixer-rails'

@@ -1,19 +1,17 @@
 <h1>Users#Index</h1>
-<p>TOTO</p>
 
-<table>
-  <tr>
-    <th>Username</th>
-    <th>Firstname</th>
-    <th>Lastname</th>
-  </tr>
+<%= simple_form_for users_path, method: :get do |f| %>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+          <%= f.input :term, placeholder: "Enter user's name or surname" %>
+        </div>
+        <div class="col text-center">
+          <%= f.button :submit, value: 'Search!' %>
+      </div>
+    </div>
+  </div>
+<% end %>
 
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.username  %></td>
-        <td><%= user.first_name  %></td>
-        <td><%= user.last_name  %></td>
-      </tr>
-    <% end %>
+<%= render "user", users: @users %>
 
-</table>
