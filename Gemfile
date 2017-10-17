@@ -24,7 +24,6 @@ gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'select2-rails'
-gem 'underscore-rails'
 
 
 group :development, :test do
