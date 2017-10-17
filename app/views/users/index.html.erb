@@ -1,0 +1,70 @@
+<h1>Users#Index</h1>
+
+
+
+<%= form_tag users_path, method: :get do %>
+  <div class="container">
+    <div class="row">
+      <div class="col text-center">
+        <%= select_tag 'term', nil, style: 'width: 100%' %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<table>
+  <tr>
+    <th>Username</th>
+    <th>Firstname</th>
+    <th>Lastname</th>
+  </tr>
+
+<%= render "user", users: @users %>
+
+</table>
+
+
+<% content_for(:after_js) do %>
+  <script>
+
+    var $eventSelect = $('#term').select2({
+      ajax: {
+        url: '/tools/admin/users',
+        data: function(params) {
+          return {
+            term: params.term
+          };
+        },
+        dataType: 'json',
+        delay: 100,
+        processResults: function(data, params) {
+          return {
+            results: $.map(data, function(el) {
+              return {
+                id: el.username,
+                name: el.username + " (" + el.firstname + " " + el.lastname + ")",
+              };
+            })
+          };
+        },
+        cache: true
+      },
+      tags: true,
+      theme: "bootstrap",
+      escapeMarkup: function(text) {
+        return text;
+      },
+      minimumInputLength: 2,
+      templateResult: function(item) {
+        return item.name;
+      },
+      templateSelection: function(item) {
+        return item.name;
+      }
+    });
+    $eventSelect.on("select2:select", function() {
+       $(this).parents('form').submit();
+    });
+
+  </script>
+<% end %>

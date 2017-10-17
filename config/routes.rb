@@ -3,8 +3,10 @@ Rails.application.routes.draw do
 
   scope '/tools' do
     scope '/admin' do
-      root to: 'pages#home'
+      resources :users, only: [:index]
     end
   end
+
+  get "/" => redirect("/tools/admin/users")
 
 end
