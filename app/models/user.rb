@@ -1,12 +1,5 @@
 class User < ApplicationRecord
-  include PgSearch
-  pg_search_scope :search_by_name, against: [:first_name, :username, :last_name],
-    using: {
-      tsearch: {
-        any_word: true,
-        prefix: true,
-      }
-    }
+  ransack_alias :user, :username_or_first_name_or_last_name
   rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

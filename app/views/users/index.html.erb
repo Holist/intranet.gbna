@@ -2,14 +2,9 @@
 
 
 
-<%= form_tag users_path, method: :get do %>
-  <div class="container">
-    <div class="row">
-      <div class="col text-center">
-        <%= select_tag 'term', nil, style: 'width: 100%' %>
-      </div>
-    </div>
-  </div>
+<%= form_with url: search_path, local: true, method: :get, class: "form-inline user-search-form" do |form|  %>
+  <%= form.text_field :q, placeholder: "Search", data: { behavior: "autocomplete" }, class: "form-control" %>
+  <%= form.button "Search", class: "btn btn-outline-success" %>
 <% end %>
 
 <table>
@@ -27,44 +22,89 @@
 <% content_for(:after_js) do %>
   <script>
 
-    var $eventSelect = $('#term').select2({
-      ajax: {
-        url: '/tools/admin/users',
-        data: function(params) {
-          return {
-            term: params.term
-          };
+      $input = $("[data-behavior='autocomplete']")
+
+      var options = {
+        getValue: "username",
+        url: function(phrase) {
+          return "/tools/admin/users/autocomplete.json?q=" + phrase;
         },
-        dataType: 'json',
-        delay: 100,
-        processResults: function(data, params) {
-          return {
-            results: $.map(data, function(el) {
-              return {
-                id: el.username,
-                name: el.username + " (" + el.firstname + " " + el.lastname + ")",
-              };
-            })
-          };
+        list: {
+          maxNumberOfElements: 10,
+            onChooseEvent: function() {
+              $('.user-search-form').submit()
+            }
         },
-        cache: true
-      },
-      tags: true,
-      theme: "bootstrap",
-      escapeMarkup: function(text) {
-        return text;
-      },
-      minimumInputLength: 2,
-      templateResult: function(item) {
-        return item.name;
-      },
-      templateSelection: function(item) {
-        return item.name;
+        template: {
+          type: "custom",
+          method: function(value, item) {
+            return value + " <i>(" + item.first_name + " " + item.last_name + " )</i>"
+          }
+        },
+        highlightPhrase: false,
       }
-    });
-    $eventSelect.on("select2:select", function() {
-       $(this).parents('form').submit();
-    });
+
+      $input.easyAutocomplete(options)
+
+
+  // $('#term').autocomplete({
+  //   source : function(request, response){
+  //   // les deux arguments représentent les données nécessaires au plugin
+  //     $.ajax({
+  //       url : '/tools/admin/users', // on appelle le script JSON
+  //       dataType : 'json', // on spécifie bien que le type de données est en JSON
+  //       data : {
+  //         name: request.term
+  //       },
+  //       success : function(data){
+  //         response($.map(data, function(item){
+  //            return {
+  //             label: item.name
+  //           };
+  //         }));
+  //       }
+  //     });
+  //   }
+  // });
+
+    // var $eventSelect = $('#term').select2({
+    //   ajax: {
+    //     url: '/tools/admin/users',
+    //     data: function(params) {
+    //       return {
+    //         term: params.term
+    //       };
+    //     },
+    //     dataType: 'json',
+    //     delay: 100,
+    //     processResults: function(data, params) {
+    //       return {
+    //         results: $.map(data, function(el) {
+    //           return {
+    //             id: el.username,
+    //             name: el.username + " (" + el.firstname + " " + el.lastname + ")",
+    //           };
+    //         })
+    //       };
+    //     },
+    //     cache: true
+    //   },
+    //   tags: true,
+    //   theme: "bootstrap",
+    //   escapeMarkup: function(text) {
+    //     return text;
+    //   },
+    //   minimumInputLength: 2,
+    //   templateResult: function(item) {
+    //     return item.name;
+    //   },
+    //   templateSelection: function(item) {
+    //     return item.name;
+    //   }
+    // });
+    // $eventSelect.on("select2:select", function() {
+    //    $(this).parents('form').submit();
+    // });
 
   </script>
 <% end %>
