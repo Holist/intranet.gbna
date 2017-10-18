@@ -12,7 +12,7 @@ gem 'rolify'
 gem 'net-ldap'
 gem 'activeldap', :require => 'active_ldap/railtie'
 gem 'figaro'
-gem 'pg_search'
+gem 'ransack'
 
 
 # Frontend
@@ -23,7 +23,7 @@ gem 'jquery-rails'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
-gem 'select2-rails'
+
 
 
 group :development, :test do

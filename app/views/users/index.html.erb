@@ -1,15 +1,8 @@
 <h1>Users#Index</h1>
 
-
-
-<%= form_tag users_path, method: :get do %>
-  <div class="container">
-    <div class="row">
-      <div class="col text-center">
-        <%= select_tag 'term', nil, style: 'width: 100%' %>
-      </div>
-    </div>
-  </div>
+<%= form_with url: search_path, local: true, method: :get, class: "form-inline user-search-form" do |form|  %>
+  <%= form.text_field :q, placeholder: "Search", data: { behavior: "autocomplete" }, class: "form-control user-search-field" %>
+  <%= form.button "Search", class: "btn btn-default" %>
 <% end %>
 
 <table>
@@ -23,48 +16,93 @@
 
 </table>
 
-
 <% content_for(:after_js) do %>
   <script>
 
-    var $eventSelect = $('#term').select2({
-      ajax: {
-        url: '/tools/admin/users',
-        data: function(params) {
-          return {
-            term: params.term
-          };
-        },
-        dataType: 'json',
-        delay: 100,
-        processResults: function(data, params) {
-          return {
-            results: $.map(data, function(el) {
-              return {
-                id: el.username,
-                name: el.username + " (" + el.firstname + " " + el.lastname + ")",
-              };
-            })
-          };
-        },
-        cache: true
-      },
-      tags: true,
-      theme: "bootstrap",
-      escapeMarkup: function(text) {
-        return text;
-      },
-      minimumInputLength: 2,
-      templateResult: function(item) {
-        return item.name;
-      },
-      templateSelection: function(item) {
-        return item.name;
-      }
-    });
-    $eventSelect.on("select2:select", function() {
-       $(this).parents('form').submit();
-    });
+      $input = $("[data-behavior='autocomplete']")
 
+      var options = {
+        theme: "blue-light",
+        getValue: "username",
+        url: function(phrase) {
+          return "/tools/admin/users/autocomplete.json?q=" + phrase;
+        },
+        list: {
+          maxNumberOfElements: 10,
+            onChooseEvent: function() {
+              $('.user-search-form').submit()
+            }
+        },
+        template: {
+          type: "custom",
+          method: function(value, item) {
+            return value + " <i>(" + item.first_name + " " + item.last_name + " )</i>"
+          }
+        },
+        highlightPhrase: false,
+      }
+
+      $input.easyAutocomplete(options)
   </script>
 <% end %>
+
+<!-- // Try with autocomplete from Jquery UI
+    // $('#term').autocomplete({
+    //   source : function(request, response){
+    //   // les deux arguments représentent les données nécessaires au plugin
+    //     $.ajax({
+    //       url : '/tools/admin/users', // on appelle le script JSON
+    //       dataType : 'json', // on spécifie bien que le type de données est en JSON
+    //       data : {
+    //         name: request.term
+    //       },
+    //       success : function(data){
+    //         response($.map(data, function(item){
+    //            return {
+    //             label: item.name
+    //           };
+    //         }));
+    //       }
+    //     });
+    //   }
+    // });
+
+// Try with select2
+    // var $eventSelect = $('#term').select2({
+    //   ajax: {
+    //     url: '/tools/admin/users',
+    //     data: function(params) {
+    //       return {
+    //         term: params.term
+    //       };
+    //     },
+    //     dataType: 'json',
+    //     delay: 100,
+    //     processResults: function(data, params) {
+    //       return {
+    //         results: $.map(data, function(el) {
+    //           return {
+    //             id: el.username,
+    //             name: el.username + " (" + el.firstname + " " + el.lastname + ")",
+    //           };
+    //         })
+    //       };
+    //     },
+    //     cache: true
+    //   },
+    //   tags: true,
+    //   theme: "bootstrap",
+    //   escapeMarkup: function(text) {
+    //     return text;
+    //   },
+    //   minimumInputLength: 2,
+    //   templateResult: function(item) {
+    //     return item.name;
+    //   },
+    //   templateSelection: function(item) {
+    //     return item.name;
+    //   }
+    // });
+    // $eventSelect.on("select2:select", function() {
+    //    $(this).parents('form').submit();
+    // }); -->
