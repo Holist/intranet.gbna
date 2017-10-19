@@ -15,9 +15,13 @@
     <div class="admin-user-card__options">
       <ul>
         <% user.options_values.each do |option| %>
-        <li><%= option[0] %> : <%= option[1]  %></li>
+        <li><%= option[0] %> : <%= option[1] %></li>
         <% end %>
       </ul>
+    </div>
+
+    <div class="admin-user-card__edit-btn">
+      <button name="button" type="Edit" class="btn btn-default">Edit</button>
     </div>
 
   </div>
