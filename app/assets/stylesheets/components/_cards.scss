@@ -1,0 +1,22 @@
+.admin-user-card {
+  position: relative;
+  height: 280px;
+  border: 1px solid black;
+  margin: 10px;
+  padding: 10px;
+  min-width: 400px;
+}
+
+.admin-user-card__avatar img{
+  position: absolute;
+  height: 43%;
+  width: 25%;
+  max-width: 100px;
+}
+
+.admin-user-card__id {
+  display: flex;
+  justify-content: space-between;
+  min-height: 50%;
+  border-bottom: 1px solid #bab4b4;
+}

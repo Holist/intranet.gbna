@@ -1,20 +1,27 @@
-<h1>Users#Index</h1>
+<div class="jumbotron text-center">
+  <h1>Admins tools - USERS</h1>
+  <p>Accés restreint !!</p>
+</div>
 
-<%= form_with url: search_path, local: true, method: :get, class: "form-inline user-search-form" do |form|  %>
-  <%= form.text_field :q, placeholder: "Search", data: { behavior: "autocomplete" }, class: "form-control user-search-field" %>
-  <%= form.button "Search", class: "btn btn-default" %>
-<% end %>
+<div class="wrapper">
+  <div class="container">
+    <div class="row admin-user-search d-flex">
+      <%= form_with url: search_path, local: true, method: :get, class: "form-inline text-center admin-user-search__form" do |form|  %>
+        <%= form.text_field :q, placeholder: "Entrer un nom d'utilisateur", data: { behavior: "autocomplete" }, class: "form-control text-center admin-user-search__field" %>
+        <%= form.button "Recherche", class: "btn btn-default admin-user-search__btn" %>
+      <% end %>
+    </div>
+  </div>
 
-<table>
-  <tr>
-    <th>Username</th>
-    <th>Firstname</th>
-    <th>Lastname</th>
-  </tr>
+  <div class="container-fluid">
+    <div class="row">
+      <%= render partial: "user_card", collection: @users, as: :user %>
+    </div>
+  </div>
 
-<%= render "user", users: @users %>
+</div>
 
-</table>
+
 
 <% content_for(:after_js) do %>
   <script>
@@ -43,6 +50,7 @@
       }
 
       $input.easyAutocomplete(options)
+
   </script>
 <% end %>
 

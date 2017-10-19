@@ -1,3 +1,16 @@
-.user-search-field {
+.admin-user-search {
+  display: flex;
+  justify-content: space-around;
+}
+
+.admin-user-search__field {
   width: 500px !important;
+}
+
+.admin-user-search__btn {
+  margin: 10px;
+}
+
+.easy-autocomplete {
+  display: inline-block;
 }
