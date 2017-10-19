@@ -1,0 +1,33 @@
+.admin-user-card {
+  position: relative;
+  min-height: 280px;
+  height: auto;
+  border: 1px solid #bab4b4;
+  margin: 10px;
+  padding: 10px;
+  min-width: 400px;
+  border-radius: 2px;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+  background-color: #EEEEEE;
+}
+
+.admin-user-card__avatar img{
+  position: absolute;
+  height: auto;
+  max-width: 100px;
+}
+
+.admin-user-card__id {
+  display: flex;
+  justify-content: space-between;
+  min-height: 112px;
+  border-bottom: 1px solid #bab4b4;
+}
+
+.admin-user-card__options {
+  margin: 10px;
+}
+
+.admin-user-card__edit-btn {
+  position: absolute;
+}

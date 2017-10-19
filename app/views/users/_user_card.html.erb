@@ -1,0 +1,28 @@
+<div class="col-xs-12 col-sm-6 col-lg-4">
+  <div class="admin-user-card">
+    <div class="admin-user-card__id">
+      <div class="admin-user-card__avatar">
+        <%= image_tag("default_avatar.jpg", alt: "Default Avatar") %>
+      </div>
+      <div class="admin-user-card__infos">
+        <p><b><%= user.first_name_if_exist %>
+         <%= user.last_name_if_exist %></b></p>
+        <p><i><%= user.email  %></i> </p>
+        <p>Username : <b><%= user.username %></b></p>
+      </div>
+    </div>
+
+    <div class="admin-user-card__options">
+      <ul>
+        <% user.options_values.each do |option| %>
+        <li><%= option[0] %> : <%= option[1] %></li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="admin-user-card__edit-btn">
+      <button name="button" type="Edit" class="btn btn-default">Edit</button>
+    </div>
+
+  </div>
+</div>
