@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :force_json, only: :autocomplete
 
   def index
-    @users = []
+    @users = User.last(10)
   end
 
   def autocomplete
