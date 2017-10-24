@@ -3,7 +3,7 @@ class LdapService
   def users_sync(date = 90)
     recents_users = get_last_users(date)
     users = clean(recents_users)
-    return 'nothing to import' if users.empty?
+    return 'Aucun utilisateur à importer' if users.empty?
     create_users(users)
   end
 
@@ -45,6 +45,7 @@ class LdapService
         next
       end
     end
-    errors unless errors.empty?
+    return errors unless errors.empty?
+    return "#{users.length} utilisateur(s) importé(s)"
   end
 end

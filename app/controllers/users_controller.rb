@@ -2,7 +2,13 @@ class UsersController < ApplicationController
   before_action :force_json, only: :autocomplete
 
   def index
-    @users = User.last(10)
+    @users = User.last(10).reverse
+  end
+
+  def sync
+    @ldap = LdapService.new.users_sync
+    flash[:sync_msg] = @ldap
+    redirect_to users_path
   end
 
   def autocomplete
