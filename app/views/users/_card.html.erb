@@ -20,9 +20,9 @@
       </ul>
     </div>
 
-    <div class="admin-user-card__edit-btn">
-      <button name="button" type="Edit" class="btn btn-default">Edit</button>
-    </div>
+    <%= form_with url: edit_user_path(user), local: true, method: :get do |form| %>
+      <%= form.button "Edit", class: "btn btn-default admin-user-card__edit-btn" %>
+    <% end %>
 
   </div>
 </div>

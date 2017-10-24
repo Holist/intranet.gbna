@@ -1,8 +1,15 @@
 class UsersController < ApplicationController
   before_action :force_json, only: :autocomplete
+  before_action :set_user, only: [:edit, :update]
 
   def index
     @users = User.last(12).reverse
+  end
+
+  def edit
+  end
+
+  def update
   end
 
   def sync
@@ -30,6 +37,10 @@ class UsersController < ApplicationController
 
   def force_json
     request.format = :json
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 
 end

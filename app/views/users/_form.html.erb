@@ -1,0 +1,16 @@
+
+<%= simple_form_for user do |f| %>
+  <%= f.input :username %>
+  <%= f.input :email %>
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+  <%= f.association :options , as: :check_boxes %>
+
+  <%= f.simple_fields_for :user do |h| %>
+    <% user.user_options.each do |user_option| %>
+      <%= h.input user_option.option.name, input_html: { value: user_option.value } %>
+    <% end %>
+  <% end %>
+
+  <%= f.button :submit %>
+<% end %>
