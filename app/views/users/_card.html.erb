@@ -20,9 +20,11 @@
       </ul>
     </div>
 
-    <div class="admin-user-card__edit-btn">
-      <button name="button" type="Edit" class="btn btn-default">Edit</button>
-    </div>
+    <%= link_to "Suppr", user_path(user), method: :delete, data: {confirm: " L'utilisateur '#{user.username}' sera supprimé de la BDD, etes vous sur ?"}, class: "btn btn-danger admin-user-card__delete-btn"  %>
+
+    <%= form_with url: edit_user_path(user), local: true, method: :get do |form| %>
+      <%= form.button "Edit", class: "btn btn-default admin-user-card__edit-btn" %>
+    <% end %>
 
   </div>
 </div>

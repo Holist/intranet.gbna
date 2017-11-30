@@ -1,8 +1,20 @@
 class UsersController < ApplicationController
   before_action :force_json, only: :autocomplete
+  before_action :set_user, only: [:edit, :update, :destroy]
 
   def index
-    @users = User.last(10).reverse
+    @users = User.last(12).reverse
+  end
+
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
+    @user.destroy
+    redirect_to users_path
   end
 
   def sync
@@ -16,18 +28,24 @@ class UsersController < ApplicationController
   end
 
   def search
-    if params[:q]
+    # Do not display all users if empty search...
+    if params[:q] == ''
+      redirect_to users_path
+      return
+    else params[:q]
       @users = User.ransack(user_cont: params[:q]).result(distinct: true)
-    else
-      @users = User.all
+      render :index
     end
-    render :index
   end
 
   private
 
   def force_json
     request.format = :json
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 
 end

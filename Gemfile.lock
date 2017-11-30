@@ -62,6 +62,7 @@ GEM
       sass (>= 3.3.4)
     builder (3.2.3)
     byebug (9.1.0)
+    cocoon (1.2.11)
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
     crass (1.0.2)
@@ -220,6 +221,7 @@ DEPENDENCIES
   activeldap
   autoprefixer-rails
   bootstrap-sass
+  cocoon
   devise
   faker!
   figaro

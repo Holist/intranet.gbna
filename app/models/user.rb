@@ -15,7 +15,7 @@ class User < ApplicationRecord
   validates :username, :presence => true, :uniqueness => { :case_sensitive => false }
   validates_format_of :username, with: /^[^@]*$/, :multiline => true
   validate :validate_username
-  has_many :user_options
+  has_many :user_options, inverse_of: :user # Needed for cocoon
   has_many :options, through: :user_options
 
 
