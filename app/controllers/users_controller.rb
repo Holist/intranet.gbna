@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :force_json, only: :autocomplete
-  before_action :set_user, only: [:edit, :update]
+  before_action :set_user, only: [:edit, :update, :destroy]
 
   def index
     @users = User.last(12).reverse
@@ -10,6 +10,11 @@ class UsersController < ApplicationController
   end
 
   def update
+  end
+
+  def destroy
+    @user.destroy
+    redirect_to users_path
   end
 
   def sync
