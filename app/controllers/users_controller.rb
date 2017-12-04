@@ -24,7 +24,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    params["user"]["password"] = ENV['DEFAULT_PASSWORD']
     if @user.update_attributes(user_params)
       redirect_to users_path
     else
@@ -69,7 +68,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :first_name, :last_name, :email, :password, user_options_attributes: [:option_id, :id, :value, :_destroy])
+    params.require(:user).permit(:username, :first_name, :last_name, :email, user_options_attributes: [:option_id, :id, :value, :_destroy])
   end
 
 end
