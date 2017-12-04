@@ -12,7 +12,7 @@
       <!-- Links when logged in -->
       <%= link_to "Synchro AD", users_sync_path, method: :post, data: { disable_with: "Please wait..." }, class: "navbar-wagon-item navbar-wagon-link" %>
 
-      <%= link_to "Manage Options", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Manage Options", new_option_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
       <%= link_to 'Créer un user', new_user_path, class: "navbar-wagon-item navbar-wagon-link" %>
 

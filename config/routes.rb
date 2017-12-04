@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   scope '/tools' do
     scope '/admin' do
       resources :users, only: [:new, :create, :index, :edit, :update, :destroy]
+      resources :options, only: [:new, :create]
       scope '/users' do
         post :sync, controller: :users, as: :users_sync
         get :search, controller: :users
