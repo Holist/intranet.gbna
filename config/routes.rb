@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   scope '/tools' do
     scope '/admin' do
-      resources :users, only: [:index, :edit, :update, :destroy]
+      resources :users, only: [:new, :create, :index, :edit, :update, :destroy]
       scope '/users' do
         post :sync, controller: :users, as: :users_sync
         get :search, controller: :users

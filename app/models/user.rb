@@ -15,9 +15,10 @@ class User < ApplicationRecord
   validates :username, :presence => true, :uniqueness => { :case_sensitive => false }
   validates_format_of :username, with: /^[^@]*$/, :multiline => true
   validate :validate_username
-  has_many :user_options, inverse_of: :user # Needed for cocoon
+  has_many :user_options, dependent: :destroy, inverse_of: :user
+  accepts_nested_attributes_for :user_options, allow_destroy: true,
+                                reject_if: ->(attrs) { attrs['value'].blank? }
   has_many :options, through: :user_options
-
 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup

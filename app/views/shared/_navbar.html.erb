@@ -1,6 +1,6 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-  <%= link_to "#", class: "navbar-wagon-brand" do %>
+  <%= link_to users_path, class: "navbar-wagon-brand" do %>
     <%= image_tag "logo.png" %>
   <% end %>
 
@@ -14,13 +14,15 @@
 
       <%= link_to "Manage Options", "#", class: "navbar-wagon-item navbar-wagon-link" %>
 
+      <%= link_to 'Créer un user', new_user_path, class: "navbar-wagon-item navbar-wagon-link" %>
+
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <%= image_tag "default_avatar", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
-              <%= link_to "#" do %>
+              <%= link_to users_path do %>
                 <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
               <% end %>
             </li>

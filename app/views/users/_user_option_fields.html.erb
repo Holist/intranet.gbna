@@ -1,0 +1,5 @@
+<div class='nested-fields'>
+  <%= f.association :option, label: "Option", collection: Option.all.order('name') %>
+  <%= f.input :value %>
+  <%= link_to_remove_association "Supprimer l'option", f %>
+</div>
