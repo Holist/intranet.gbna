@@ -1,17 +1,24 @@
-<h1><%= user %></h1>
+<%= simple_form_for @user do |f| %>
+  <%= render 'shared/errors', object: @user %>
 
-<%= simple_form_for user do |f| %>
   <%= f.input :username %>
-  <%= f.input :email %>
   <%= f.input :first_name %>
   <%= f.input :last_name %>
-  <%= f.association :options , as: :check_boxes %>
+  <%= f.input :email %>
 
-  <%= f.simple_fields_for :user do |h| %>
-    <% user.user_options.each do |user_option| %>
-      <%= h.input user_option.option.name, input_html: { value: user_option.value } %>
+  <h3>Options</h3>
+  <div id='user_options'>
+    <%= f.simple_fields_for :user_options do |user_option| %>
+      <%= render 'user_option_fields', f: user_option %>
     <% end %>
-  <% end %>
 
-  <%= f.button :submit %>
+    <div class="links">
+      <%= link_to_add_association 'add user_option', f, :user_options %>
+    </div>
+  </div>
+
+    <%= f.submit %>
 <% end %>
+
+
+

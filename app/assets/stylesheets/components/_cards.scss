@@ -5,7 +5,7 @@
   border: 1px solid #bab4b4;
   margin: 10px;
   padding: 10px;
-  min-width: 400px;
+  min-width: 365px;
   border-radius: 2px;
   box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
   background-color: #EEEEEE;
@@ -30,9 +30,17 @@
 
 .admin-user-card__edit-btn {
   position: absolute;
-  left: 88%;
+  left: 84%;
   bottom: 3%;
 }
+
+// @media screen and (min-width: 768px) and (max-width: 1200px) {
+//   .admin-user-card__edit-btn {
+//     position: absolute;
+//     left: 84%;
+//     bottom: 3%;
+//   }
+// }
 
 .admin-user-card__delete-btn {
   position: absolute;
